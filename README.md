@@ -4,6 +4,16 @@ node2vec Backup material
 
 data_file is CVE -> Pretreatment
 
+The project was launched to create categories of data vulnerabilities using cve.
+It was expected that using the language model of word2vec would not produce information that is different from cve details.
+So I decided to approach it as a graph model.
+I decided to use cve_id and freetext for the graph.
+Freetext includes detailed information on vulnerabilities and classification information such as areas to which they belong, so it is decided to produce a new perspective through freetext.
+The goal is to use a five-year cve_id.
+The latest security vulnerability information is most accurate to be posted on the community, and freetext is idfed for clarity to pick out the most important words. 
+Of course, I think that important words can be removed through idf, but I excluded them.
+This is because the operating system or major programs, such as the window, can be seen as important, but they are too large a category.
+
 # ngram_idmaping.Py
 This is a file that maps to pre-processed data. 
 It's exactly a reverse index job.
@@ -22,7 +32,7 @@ There was no good evaluation of K and it was constant.
 So I decided because I thought there were about 20 types of security vulnerabilities.
 
 # sklearnkmeans.py
-A clustering course file.
+A clustering file.
 We proceeded with 20K.
 The clustering output and file generation are annotated.
 This is used to print clustered results.
