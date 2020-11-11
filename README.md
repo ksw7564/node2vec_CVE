@@ -4,52 +4,35 @@ node2vec Backup material
 
 data_file is CVE -> Pretreatment
 
-The project was launched to create categories of data vulnerabilities using cve.
-It was expected that using the language model of word2vec would not produce information that is different from cve details.
-So I decided to approach it as a graph model.
-I decided to use cve_id and freetext for the graph.
-Freetext includes detailed information on vulnerabilities and classification information such as areas to which they belong, so it is decided to produce a new perspective through freetext.
-The goal is to use a five-year cve_id.
-The latest security vulnerability information is most accurate to be posted on the community, and freetext is idfed for clarity to pick out the most important words. 
-Of course, I think that important words can be removed through idf, but I excluded them.
-This is because the operating system or major programs, such as the window, can be seen as important, but they are too large a category.
+This project was launched to create a data vulnerability category using cve.
+Using word2vec's language model was expected not to generate cve details and other information.
+So I decided to approach the graph model. I decided to use cve_id and freetext for the graph.
+Since Freetext contains analytics such as details about vulnerabilities and the areas they belong to, we decided to create a new perspective with Freetext.
+The goal is to use cve_id for 5 years.
+The latest security vulnerability information is the most accurate to post to the community, and free text is provided to help you clarify the words that matter most. (Scalability)
+Of course I think the important words can be removed via idf, but I excluded them.
+The main program, such as the operating system or windows, may be considered important, but it is because the categories are too large.
 
-As a result, the node becomes cve_id and idf(freetext).
-If cve_id refers to idf, create an edge to connect the nodes.
-But cve_id is not connected to each other.
-That is, to find connections with other cve_id, you must go through idf.
-The expected graph inclusion is as follows:
+As a result the nodes will be cve_id and idf (free text).
+If cve_id refers to idf, create an edge connecting the nodes.
+However, cve_ids are not linked to each other. This means you have to go through idf to find a connection with another cve_id. The expected graph inclusion is as follows:
 
-CVE_ID ——— IDF(freetext) ——— CVE_ID
+CVE_ID ——— IDF (Free Text) ——— CVE_ID
 
-The algorithm to produce the model using this graph uses Node2vec.
-The reason for selection is that Node2vec, unlike Word2vec, decided to use randomwalk, which is a way to reach distant nodes.
+The algorithm that generates a model using this graph uses Node2vec.
+The reason for the choice is that Node2vec decided to use randomwalk, which is a way to reach distant nodes unlike Word2vec.
 
-Because Node2vec is basically Word2vec based, the dimension and window concepts are the same.
-walk_length : 30 Number of feet for each node (adjustment is required)
-P = 1, Q = 0.0001
-P is greatly reduced to Q so that it can be embedded to faraway nodes.
-Workers : 4 Number of workers for parallel execution
-Window : 5 (We have confirmed that larger and less relevant data is generated.)
+Node2vec is basically Word2vec based, so the dimension and window concept are the same. walk_length: 30 The number of feet in each node (need to adjust) P = 1, Q = 0.0001 P is greatly reduced to Q so that it can be included in the far node. Workers: 4 Number of workers running in parallel Window: 5 (I saw that large scale data is being generated.
 
-You can use this model to obtain similarity, but you cannot evaluate the entire data.
-For this purpose, clustering was used.
-We used the simplest KMeans clustering.
+You can use this model to achieve similarity, but you cannot evaluate the entire data. Clustering was used for this. I used the simplest KMeans clustering.
 
-To this end, I tried to use elbow and silhouette to decide K, but I didn't get a good score.
-Therefore, I used about 20 (operating systems, programs, information access, and vulnerability categories) K for the categories I thought of.
+For this, I decided on K with the elbow and silhouette, but did not get a good score. So, I used about 20 (operating systems, programs, information access, vulnerability categories) K as the categories I thought of.
 
-I think the result is okay.
-Searching for similarity for CVE_ID + CVE_ID generally identifies pointing to a cluster on one side. 
-I think we'll get better results if we use a cluster other than Kmeans for more granular clustering.
+I think the results are okay. Searching for the similarity of CVE_ID + CVE_ID is usually identified as pointing to one cluster. I think you can get better results if you use a cluster other than Kmeans for finer clustering.
 
-Cluster Analysis Result:
-Cluster 0 (first cluster) was mostly vulnerable to data acquisition.
-There are some meaningless clusters and no other cluster features found.
-(My lack of knowledge of security data appears to be the cause.)
+Cluster Analysis Results: Cluster 0 (first cluster) was mostly a vulnerability in data collection. There are a few pointless clusters and no other cluster features. (Lack of knowledge about security data seems to be the cause.)
 
-As an example of similarity, when using the two nodes closest to the center of cluster zero,
-I was teaching about 60 percent of the cve_id nodes in cluster 8.
+An example of similarity is teaching about 60% of cve_id nodes in cluster 8 when using the two nodes closest to the center of cluster 0.
 
 # ngram_idmaping.Py
 This is a file that maps to pre-processed data. 
