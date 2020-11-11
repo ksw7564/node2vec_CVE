@@ -4,7 +4,7 @@ node2vec Backup material
 
 data_file is CVE -> Pretreatment
 
-# ngram_idmapingPy
+# ngram_idmaping.Py
 This is a file that maps to pre-processed data. 
 It's exactly a reverse index job.
 Because cve data file is large, it is to proceed using reverse index.
