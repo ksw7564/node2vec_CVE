@@ -43,6 +43,14 @@ I think the result is okay.
 Searching for similarity for CVE_ID + CVE_ID generally identifies pointing to a cluster on one side. 
 I think we'll get better results if we use a cluster other than Kmeans for more granular clustering.
 
+Cluster Analysis Result:
+Cluster 0 (first cluster) was mostly vulnerable to data acquisition.
+There are some meaningless clusters and no other cluster features found.
+(My lack of knowledge of security data appears to be the cause.)
+
+As an example of similarity, when using the two nodes closest to the center of cluster zero,
+I was teaching about 60 percent of the cve_id nodes in cluster 8.
+
 # ngram_idmaping.Py
 This is a file that maps to pre-processed data. 
 It's exactly a reverse index job.
