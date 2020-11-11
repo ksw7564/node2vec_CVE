@@ -32,6 +32,17 @@ P is greatly reduced to Q so that it can be embedded to faraway nodes.
 Workers : 4 Number of workers for parallel execution
 Window : 5 (We have confirmed that larger and less relevant data is generated.)
 
+You can use this model to obtain similarity, but you cannot evaluate the entire data.
+For this purpose, clustering was used.
+We used the simplest KMeans clustering.
+
+To this end, I tried to use elbow and silhouette to decide K, but I didn't get a good score.
+Therefore, I used about 20 (operating systems, programs, information access, and vulnerability categories) K for the categories I thought of.
+
+I think the result is okay.
+Searching for similarity for CVE_ID + CVE_ID generally identifies pointing to a cluster on one side. 
+I think we'll get better results if we use a cluster other than Kmeans for more granular clustering.
+
 # ngram_idmaping.Py
 This is a file that maps to pre-processed data. 
 It's exactly a reverse index job.
