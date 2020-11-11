@@ -4,12 +4,15 @@ node2vec Backup material
 
 data_file is CVE -> Pretreatment
 
+# ngram_idmapingPy
+This is a file that maps to pre-processed data. 
+It's exactly a reverse index job.
+Because cve data file is large, it is to proceed using reverse index.
+
 # 5yr.py
 Use this file to create a node2vec model.
 This file uses a machined dataset file (five_cos.csv, 5 year_inverted.csv).
-
 The node2vec generation variable was determined by a number of experiments that I think are most accurate.
-
 And tried to interact with distant nodes by taking advantage of the graph's characteristics.
 
 # elbow.py and visualize_silhouette.py
