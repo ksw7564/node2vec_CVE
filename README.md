@@ -22,6 +22,16 @@ The expected graph inclusion is as follows:
 
 CVE_ID ——— IDF(freetext) ——— CVE_ID
 
+The algorithm to produce the model using this graph uses Node2vec.
+The reason for selection is that Node2vec, unlike Word2vec, decided to use randomwalk, which is a way to reach distant nodes.
+
+Because Node2vec is basically Word2vec based, the dimension and window concepts are the same.
+walk_length : 30 Number of feet for each node (adjustment is required)
+P = 1, Q = 0.0001
+P is greatly reduced to Q so that it can be embedded to faraway nodes.
+Workers : 4 Number of workers for parallel execution
+Window : 5 (We have confirmed that larger and less relevant data is generated.)
+
 # ngram_idmaping.Py
 This is a file that maps to pre-processed data. 
 It's exactly a reverse index job.
