@@ -14,6 +14,14 @@ The latest security vulnerability information is most accurate to be posted on t
 Of course, I think that important words can be removed through idf, but I excluded them.
 This is because the operating system or major programs, such as the window, can be seen as important, but they are too large a category.
 
+As a result, the node becomes cve_id and idf(freetext).
+If cve_id refers to idf, create an edge to connect the nodes.
+But cve_id is not connected to each other.
+That is, to find connections with other cve_id, you must go through idf.
+The expected graph inclusion is as follows:
+
+CVE_ID ——— IDF(freetext) ——— CVE_ID
+
 # ngram_idmaping.Py
 This is a file that maps to pre-processed data. 
 It's exactly a reverse index job.
