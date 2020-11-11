@@ -21,3 +21,9 @@ The result was hopeless.
 There was no good evaluation of K and it was constant.
 So I decided because I thought there were about 20 types of security vulnerabilities.
 
+# sklearnkmeans.py
+A clustering course file.
+We proceeded with 20K.
+The clustering output and file generation are annotated.
+This is used to print clustered results.
+File creation is also annotated now.
