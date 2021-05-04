@@ -70,7 +70,7 @@ with open('cve-test-tri.csv', 'r', encoding="UTF8") as f:
                 CVE_ID.append(str(txt))
 
             # elif txt == null:
-            #     print("널이라 컨틴유할꺼임")
+            #     print
             #     continue
             else:
                 Text3.append(str(txt))
@@ -84,7 +84,7 @@ with open('cve-test-token-stem.csv', 'r', encoding="UTF8") as f:
                 continue
 
             # elif txt == null:
-            #     print("널이라 컨틴유할꺼임")
+            #     print
             #     continue
             else:
                 Text.append(str(txt))
@@ -98,7 +98,7 @@ with open('cve-test-bi.csv', 'r', encoding="UTF8") as f:
                 continue
 
             # elif txt == null:
-            #     print("널이라 컨틴유할꺼임")
+            #     print
             #     continue
             else:
                 Text2.append(str(txt))
