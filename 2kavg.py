@@ -620,7 +620,7 @@ for i in range(len(distance_list[19])):
     bsum += (distance_list[19][i])**2
 bunsan = bsum/len(distance_list[19])
 bbunsan.append(bunsan)
-#분산을구할꺼임 (평균값-현재값=구해놈)^2을 다더하고 /
+#분산구하기 (평균값-현재값=구해놈)^2을 더하면 됩니다. /
 # print(bbunsan)
 
 davg = pd.DataFrame(SSum)
