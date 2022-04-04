@@ -35,6 +35,8 @@ model2 = Word2Vec.load('./nodemodel/node2vec2.model')
 
 ks = range(1, 11)  # for 1 to 10 clusters
 word_vectors = model2.wv.syn0
+#code correction no.1
+
 # sse = []
 sil = []
 from sklearn.datasets import make_blobs
